@@ -1,0 +1,11 @@
+.metadata
+android/
+gitignore
+ios/
+linux/
+pubspec.lock
+test/
+web/
+
+
+
