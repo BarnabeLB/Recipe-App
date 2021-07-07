@@ -5,6 +5,11 @@ import '../dummy_data.dart';
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
 
+  final Function toggleFavorite;
+  final Function isFavorite;
+
+  MealDetailScreen(this.toggleFavorite, this.isFavorite);
+
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -89,6 +94,17 @@ class MealDetailScreen extends StatelessWidget {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          isFavorite(mealId) ? Icons.star : Icons.star_border,
+        ),
+        onPressed: () => toggleFavorite(mealId),
+          // Ancienne version, avec un remove item que j'ai laissé pour montrer comment ça marche
+          // Navigator.of(context).pop(mealId);
+          //.pop permet de faire passer une valeur au return (T) (.then ) du .pushNamed de meal_item.dart | permet de faire passer des données "derrière".
+          
+        
       ),
     );
   }
